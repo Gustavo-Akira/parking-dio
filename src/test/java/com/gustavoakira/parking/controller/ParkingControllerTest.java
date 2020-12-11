@@ -25,7 +25,7 @@ public class ParkingControllerTest extends AbstractContrainerBase{
         RestAssured.given()
                 .auth().basic("akira", "123456")
                 .when()
-                .get("/parking")
+                .get("api/v1/parking")
                 .then()
                 .statusCode(HttpStatus.OK.value());
     }
@@ -43,7 +43,7 @@ public class ParkingControllerTest extends AbstractContrainerBase{
                 .auth().basic("user", "Dio@123456")
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
                 .body(createDTO)
-                .post("/parking")
+                .post("/api/v1/parking")
                 .then()
                 .statusCode(HttpStatus.CREATED.value())
                 .body("license", Matchers.equalTo("WRT-5555"))
